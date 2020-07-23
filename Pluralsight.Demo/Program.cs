@@ -13,8 +13,8 @@ namespace Pluralsight.Demo
     {
         static void Main(string[] args)
         {
-            var username = "ely";
-            var password = "654321";
+            var username = "Alan";
+            var password = "963852";
 
 
             var userStore = new UserStore<IdentityUser>();
@@ -25,9 +25,14 @@ namespace Pluralsight.Demo
             //Console.WriteLine("Created:{0}", creationResult.Succeeded);
             //Console.ReadLine();
             var user = userManager.FindByName(username);
-           var claimResult =  userManager.AddClaim(user.Id,new Claim("given_name","Ely"));
+           var claimResult =  userManager.AddClaim(user.Id,new Claim("given_name", "Alan"));
 
-            Console.WriteLine("Claim:{0}", claimResult.Succeeded);
+            //Console.WriteLine("Claim:{0}", claimResult.Succeeded);
+            //Console.ReadLine();
+
+           var isMatch =userManager.CheckPassword(user, password);
+
+            Console.WriteLine("Password Match:{0}", isMatch);
             Console.ReadLine();
         }
     }
